@@ -130,7 +130,7 @@ b0data_end:
         ; The actual preloaded data follows (the remainder of the 8K bank will
         ; be erased to zeroes)
 b2data:
-        defm    "Sheppard is a twonk"
+        defm    "test"
 b2data_end:
         ; List of patches to be replaced with this bank's id
         defw    bankid_zx2              ; offset in driver to patch the bank id
