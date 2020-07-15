@@ -42,7 +42,7 @@ stop the music with
 
 .uninstall pt3player.drv 
 
-This should intefere with basic as long
+This shouldn't intefere with basic as long
 as you dont use bank 20 :)
 
 enjoy
