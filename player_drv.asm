@@ -48,7 +48,7 @@ begin:
         ;       to allow you to perform initialisation/shutdown tasks
         ;       (see border.asm for more details)
 
-        defb    3               ; number of additional 8K Spectrum RAM banks
+        defb    0               ; number of additional 8K Spectrum RAM banks
                                 ; required (0..200)
 
 
@@ -57,7 +57,7 @@ begin:
 ; ***************************************************************************
 ; The driver + relocation table should now be included.
 
-        incbin  "player.bin"
+        incbin  "pt3player.bin"
 
 
 ; ***************************************************************************
