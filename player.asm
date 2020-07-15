@@ -11,7 +11,7 @@
 
 	device zxspectrumnext 
 	
-	output "player.bin"
+	output "pt3player.bin"
 	
 musicbank	equ 40	
 	
@@ -23,6 +23,9 @@ musicbank	equ 40
 		macro nextreg_a reg
 		dw $92ed
 		db reg
+	endm
+	macro BREAK 
+		dw $01dd
 	endm
 
 ; ***************************************************************************
@@ -135,25 +138,38 @@ api_entry:
 ; need not be implemented otherwise.
 
 im1_entry:
+		;BREAK 
 		push af ,bc, de, hl, ix, iy
+		;exx
+		;push bc, de, hl
 		ex af, af'
 		push af
-		
+		ld bc,$243B			; Register Select 
+		ld a,$54
+		out(c),a			; 
+		ld bc,$253B			; reg access 
+		in a,(c) : push af 
 		nextreg_nn $54,musicbank
 		call 32768+5
-		nextreg_nn $54,04
+		pop af 
+		nextreg_a $54
 		pop af
 		ex af, af'
+		;pop hl, de, bc
+		;exx 
 		pop iy, ix, hl, de, bc, af     
 		ret 
 
-reloc_1:
-        ld      a,(colour)
-        inc     a                       ; increment stored border colour
-        and     $07
+reloc_1:		; in register in a, out value in a 
+			ld (colour),a
+			ret
+
+;reloc_1:
+;        
 reloc_2:
-        ld      (colour),a
-        out     ($fe),a                 ; set it
+        ld a,(colour)
+		nextreg_a $54 
+        ;out     ($fe),a                 ; set it
         ret
 
 
@@ -263,9 +279,16 @@ standard_api:
 ;        carry set to abort the UNINSTALL process.
 
 driver_shutdown:
+		di 
+		ld bc,$243B			; Register Select 
+		ld a,$54
+		out(c),a			; 
+		ld bc,$253B			; reg access 
+		in a,(c) : push af 
 		nextreg_nn $54,musicbank
 		call 32768+8
-		nextreg_nn $54,4
+		pop af 
+		nextreg_a $54
         and     a                       ; always safe to uninstall this driver
         ret
 
@@ -278,10 +301,15 @@ driver_shutdown:
 ;        hardware initialisation.
 
 driver_init:
-		
+		ld bc,$243B			; Register Select 
+		ld a,$54
+		out(c),a			; 
+		ld bc,$253B			; reg access 
+		in a,(c) : push af 
 		nextreg_nn $54,musicbank
 		call 32768
-		nextreg_nn $54,4
+		pop af 
+		nextreg_a $54
         and     a                       ; always safe to install this driver
         ret
 

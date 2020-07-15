@@ -16,9 +16,9 @@
 ; Pull in the symbol file for the driver itself and calculate the number of
 ; relocations used.
 		device zxspectrumnext
-		output player.drv
+		output pt3player.drv
 		
-        include "symbols.txt"
+        include "player.sym"
 
 relocs  equ     (reloc_end-reloc_start)/2
 
@@ -135,5 +135,5 @@ b2data_end:
         ; List of patches to be replaced with this bank's id
         defw    bankid_zx2              ; offset in driver to patch the bank id
 drviverend:
-		savebin "h:\driver\pt3player.drv",begin,drviverend-begin
+		savebin "h:\mcgtest\pt3player.drv",begin,drviverend-begin
 
