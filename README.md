@@ -1,6 +1,8 @@
 # pt3driver
 pt3 driver for NextZXOS
 
+v1.1 fixed banking issue
+
 a pt3 driver for NextZXOS
 
 Assemble player.asm with sjasmplus and generate a symbol file : 
