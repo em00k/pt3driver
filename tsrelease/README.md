@@ -4,7 +4,7 @@ Simple 6 channel PT3 player driver for NextBasic
 ts player (c)2004-2007 s.v.bulba
 
 - Load the "tsplayer" into Bank 20
-- Save out your 5 channel song as two seperate pt3 files in Vortex Tracker
+- Save out your 6 channel song as two seperate pt3 files in Vortex Tracker
 - Load 1.pt3 into BANK 20, offset 3109
 - Load 2.ot3 into BANK 20, offset 8192
 
