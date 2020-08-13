@@ -5,18 +5,6 @@ v1.1 fixed banking issue
 
 a pt3 driver for NextZXOS
 
-Assemble player.asm with sjasmplus and generate a symbol file : 
-
-sjasmplus player.asm --sym=symbols.txt
-
-This should generate a player.bin and symbols.txt
-
-Now you can assemble player_drv.asm 
-
-sjasmplus player_drv.asm
-
-This will creat a called pt3player.drv, this is at the end of player_drv.asm
-
 Readme from release:
 
 pt3drive for NextZXOS - emk2020 / DMS
