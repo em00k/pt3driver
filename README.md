@@ -1,3 +1,5 @@
+# This has been superceeded by v2 https://github.com/em00k/zx-nextzxos-pt3driver2
+
 # pt3driver
 pt3 driver for NextZXOS
 
